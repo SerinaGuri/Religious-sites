@@ -12,3 +12,7 @@ function checkAuth(request) {
 
     return user === API_USER && pass === API_PASS;
 }
+export async function GET() {
+    const [rows] = await pool.query('SELECT * FROM religious_sites');
+    return Response.json(rows, { status: 200 });
+}
