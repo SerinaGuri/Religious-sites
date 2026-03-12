@@ -1,42 +1,65 @@
-# sv
+# Albania Religious Sites REST API
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This project is a **REST API for mosques, churches, and monasteries in Albania** built with **SvelteKit** and **MySQL**.  
+It demonstrates clean REST design, Basic Authentication, and proper HTTP status codes.  
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Table of Contents
 
-```sh
-# create a new project
-npx sv create my-app
-```
+- [Project Overview](#project-overview)  
+- [Features](#features)  
+- [Technologies](#technologies)  
+- [Setup](#setup)  
+- [Database](#database)  
+- [API Endpoints](#api-endpoints)  
+- [Authentication](#authentication)  
+- [Testing](#testing)  
+- [Git & Development Process](#git--development-process)  
 
-To recreate this project with the same configuration:
+---
 
-```sh
-# recreate this project
-npx sv@0.12.5 create --template minimal --no-types --add prettier eslint --install npm .
-```
+## Project Overview
 
-## Developing
+This API stores **religious sites in Albania**, including:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- Mosques  
+- Churches  
+- Monasteries  
 
-```sh
-npm run dev
+It allows users to:
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- Get all sites or a single site (public)  
+- Add, update, or delete sites (protected via Basic Auth)  
 
-## Building
+The focus of this project is **REST API design, database integration, and Git workflow**.
 
-To create a production version of your app:
+---
 
-```sh
-npm run build
-```
+## Features
 
-You can preview the production build with `npm run preview`.
+- **CRUD operations** for religious sites  
+- **MySQL database** for persistent storage  
+- **Basic Authentication** for protected routes  
+- **JSON-only responses**  
+- **Correct HTTP methods and status codes**  
+- **Environment variables** for secure DB credentials  
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+---
+
+## Technologies
+
+- **SvelteKit** – Backend framework  
+- **Node.js** – JavaScript runtime  
+- **MySQL / MariaDB** – Database  
+- **mysql2/promise** – Database driver  
+- **Postman** – API testing and documentation  
+
+---
+
+## Setup
+
+1. Clone the repository:
+```bash
+git clone <repo-url>
+cd albania-religious-api
