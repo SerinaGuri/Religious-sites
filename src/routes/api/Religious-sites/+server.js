@@ -16,3 +16,11 @@ export async function GET() {
     const [rows] = await pool.query('SELECT * FROM religious_sites');
     return Response.json(rows, { status: 200 });
 }
+export async function POST({ request }) {
+
+    if (!checkAuth(request)) {
+        return Response.json({ message: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { name, location, type, built_year, religion } = await request.json();
+}
