@@ -39,5 +39,31 @@ export async function PUT({ params, request }) {
     const { id } = params;
 
     const { name, location, type, built_year, religion } = await request.json();
+    
+    if (!name || !location || !type) {
+    return Response.json(
+        { message: 'Missing required fields' },
+        { status: 400 }
+    );
+}
+
+const [result] = await pool.query(
+    `UPDATE religious_sites
+     SET name = ?, location = ?, type = ?, built_year = ?, religion = ?
+     WHERE id = ?`,
+    [name, location, type, built_year, religion, id]
+);
+
+if (result.affectedRows === 0) {
+    return Response.json(
+        { message: 'Religious site not found' },
+        { status: 404 }
+    );
+}
+
+return Response.json(
+    { message: 'Religious site updated' },
+    { status: 200 }
+);
 
 }
