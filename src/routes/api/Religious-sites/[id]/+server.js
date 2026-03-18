@@ -30,3 +30,14 @@ export async function GET({ params }) {
 
     return Response.json(rows[0], { status: 200 });
 }
+export async function PUT({ params, request }) {
+
+    if (!checkAuth(request)) {
+        return Response.json({ message: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { id } = params;
+
+    const { name, location, type, built_year, religion } = await request.json();
+
+}
