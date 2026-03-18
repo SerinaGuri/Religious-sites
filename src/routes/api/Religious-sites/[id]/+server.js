@@ -39,7 +39,7 @@ export async function PUT({ params, request }) {
     const { id } = params;
 
     const { name, location, type, built_year, religion } = await request.json();
-    
+
     if (!name || !location || !type) {
     return Response.json(
         { message: 'Missing required fields' },
@@ -66,4 +66,27 @@ return Response.json(
     { status: 200 }
 );
 
+}
+
+export async function DELETE({ params, request }) {
+
+    if (!checkAuth(request)) {
+        return Response.json({ message: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { id } = params;
+
+    const [result] = await pool.query(
+        'DELETE FROM religious_sites WHERE id = ?',
+        [id]
+    );
+
+    if (result.affectedRows === 0) {
+        return Response.json(
+            { message: 'Religious site not found' },
+            { status: 404 }
+        );
+    }
+
+    return new Response(null, { status: 204 });
 }
